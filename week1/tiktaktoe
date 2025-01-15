@@ -1,0 +1,52 @@
+package week1;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class TicTacToeFianal {
+	static char[][] board = new char[3][3]; // 3*3 이차원 배열
+	static int x ,y ; //정적 변수 -> 공유하기 위해서 사용
+
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		Random random = new Random();
+		initBoard();
+		printBoard();
+
+		while(!boardFull()) {
+			System.out.println("휴먼 플레이 동작");
+			
+			int[] humanArray = new int[2];
+			humanArray = humanPlay(input); 
+
+      //일차원 배열인 humanArray의 값을 이차원 배열인 board에 넣기 위함
+			int index1 = humanArray[0];
+			int index2 = humanArray[1];
+			board[index1][index2] = 'X';
+			
+			//지금 휴먼플레이 값이 배열임 1 | 1 <- 예시
+			//보드에 찍어야함
+			printBoard();
+			if(won()) {
+				printRe음
+	static int[] humanPlay(Scanner sc) {
+		int[] integer = new int[2];
+		do {
+		x= sc.nextInt();
+		y= sc.nextInt();
+		 if(!isInputValid()) {
+			 System.out.println("다시 입력 하세요");
+			 continue;
+		 }else {
+			 integer[0]=x;
+			 integer[1]=y;
+			 return integer;
+		 }
+		}while(true);
+	}
+
+
+
+
+}
