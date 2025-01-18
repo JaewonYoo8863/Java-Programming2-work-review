@@ -1,0 +1,54 @@
+package week3;
+
+public class BankAccountTester {
+	public static void main(String[] args) {
+
+  //오버로드 매개변수의 유무 타입에 따라 그에 맞는 메서드로 이동
+		BankAccount acoount1 = new BankAccount(); 
+		BankAccount acoount2= new BankAccount(1000.0);
+
+		acoount1.deposit(500.0);
+		acoount2.deposit(500.0);
+		acoount1.withdraw(100);
+		acoount2.withdraw(100);
+		System.out.println(acoount1.getBalance());
+		System.out.println(acoount2.getBalance());
+
+	}
+}
+package week3;
+public class BankAccount {
+	private double balance; 
+	
+	
+	
+	//BankAccount 계좌를 생성 초기 값은 0.0
+	public BankAccount() { 
+		balance = 0.0;
+	}
+	
+
+	//BankAccount 계좌를 생성 초기 값은 initialBalance
+	public BankAccount (double initialBalance) {
+		balance = initialBalance;
+	}
+	
+	
+
+	public void deposit (double amount) {
+		balance = balance + amount;
+	} 
+	
+	public void withdraw(double amount) {
+		balance = balance - amount;
+	
+	}
+
+
+	public double getBalance() {
+		return balance;
+		
+	}
+}
+
+
