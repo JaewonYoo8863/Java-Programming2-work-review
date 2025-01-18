@@ -1,0 +1,71 @@
+package week3;
+
+import java.util.Random;
+public class Dice {
+	private Die die2; //생성자 메모리 생성
+	private Die die1;
+
+	/**
+	 *생성자
+	 * @param r 주사위를 굴려 숫자를 만들어 낼 때 사용할 난수발생기.
+	 */
+
+	public Dice (Random r) {
+		die1 = new Die(r);
+		die2 = new Die(r);
+
+
+	}
+
+	/**
+	 *주사위 쌍을 굴린다.
+	 * @return 주사위 두 쌍의 숫자 합
+	 *  */
+	public int roll() {
+		int d1 = die1.roll();
+		int d2 = die2.roll();
+		int sum = d1+ d2;
+
+		return sum;
+
+
+	}
+}
+
+package week3;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class DIceCasting2 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		System.out.print("Seed: ");
+		long seed = input.nextLong();
+		Random random = new Random(seed);
+
+		Dice dice = new Dice(random);
+
+
+		int[] Count = new int[13];
+
+
+
+// 두 주사위 합의 빈도를 구함 1000번 반복하여 Count 배열 인덱스 값을 증가함
+		for(int i = 0 ; i<1000; i++) {
+			Count[dice.roll()]++;
+
+		}
+		for(int j = 1; j<13; j++) {
+			System.out.println(j+":		"+Count[j]);
+		}
+
+
+
+
+	}
+
+}
+
+
