@@ -1,0 +1,180 @@
+package week2;
+
+
+public class CounterTest {
+	public static void main(String[] args) {
+		Counter counter = new Counter(); // 생성자 생성 -> 메모리 생성
+		Counter counter2= new Counter();
+		counter.setCount(8);
+		counter.tick();
+		System.out.println("Count = "+ counter.getCount());
+		counter.tick();
+		System.out.println("Count = "+ counter.getCount());
+		counter.tick();
+		System.out.println("Count = "+ counter.getCount());
+		counter.tick();
+		System.out.println("Count = "+ counter.getCount()); 
+		System.out.println();
+		counter.setCount(12); // 허용 범위 밖의 값으로 설정 시도 
+		System.out.println("Try to set counter to 12"); 
+		System.out.println("Count = " + counter.getCount());
+		counter.setCount(5); // 허용 범위 내의 값으로 설정 시도 
+		System.out.println("Try to set counter to 5"); 
+		System.out.println("Count = "+counter.getCount());
+	}
+}
+
+package week2;
+
+
+
+public class Counter2 {
+	private int count = 0; //정적변수-> 다른 클래스에서의 접근 차단
+	private int max = 10;
+
+	public void setMax(int max) {
+		this.max = max;
+
+	}
+
+	public void tick() {
+		if(count>= max) {
+			count = 0;
+		}else {
+			count++;
+		}
+
+	}
+
+
+	public int getCount(){
+		return count;
+	}
+
+	public void setCount(int number) {
+		this.count=number;
+
+	}
+
+	private boolean isInputValid(int number) {
+		if (number < 0)
+			return false;
+		
+		if (number> max)
+			return false;
+		
+		return true;
+	}
+	
+	public static void main(String[] args) {
+		Counter2 c12= new Counter2();
+		Counter2 c60 = new Counter2();
+		
+		c12.setMax(12);
+		c60.setMax(60);
+		
+		c12.setCount(11);
+		
+		c12.tick();
+		System.out.println(c12.getCount());
+		c12.tick();
+		System.out.println(c12.getCount());
+		c12.tick();
+		System.out.println(c12.getCount());
+		c12.tick();
+		System.out.println(c12.getCount());
+		
+		
+		c60.setCount(59);
+		
+		c60.tick();
+		System.out.println(c60.getCount());
+		c60.tick();
+		System.out.println(c60.getCount());
+		c60.tick();
+		System.out.println(c60.getCount());
+		c60.tick();
+		System.out.println(c60.getCount());
+	}
+}
+
+//
+package week2;
+
+public class Count3 {
+
+	private int count = 0;
+	private int max = 10;
+
+//맥스 값을 받음
+	public Count3(int max) {
+		this.max = max;
+	}
+
+	public void setMax(int max) {
+		this.max = max;
+	}
+
+//count가 max보다 크면 0으로 그렇지 않으면 하나 추가가
+	public void tick() {
+		if(count>= max) {
+			count = 0;
+		}else {
+			count++;
+		}
+
+	}
+
+
+	public int getCount(){
+		return count;
+	}
+
+	public void setCount(int number) {
+		this.count=number;
+
+	}
+
+//number의 값을 판단
+	private boolean isInputValid(int number) {
+		if (number < 0)
+			return false;
+
+		if (number> max)
+			return false;
+
+		return true;
+	}
+
+
+	public static void main(String[] args) {
+		Count3 c12= new Count3(12);
+		Count3 c60 = new Count3(60);
+
+		c12.setCount(11);
+
+		c12.tick();
+		System.out.println(c12.getCount());
+		c12.tick();
+		System.out.println(c12.getCount());
+		c12.tick();
+		System.out.println(c12.getCount());
+		c12.tick();
+		System.out.println(c12.getCount());
+
+		c60.setCount(59);
+
+		c60.tick();
+		System.out.println(c60.getCount());
+		c60.tick();
+		System.out.println(c60.getCount());
+		c60.tick();
+		System.out.println(c60.getCount());
+		c60.tick();
+		System.out.println(c60.getCount());
+	}
+}
+
+
+//count 클래스에서는 count 값을 매소드에서 사용하기 위해서 정적전역변수로 선언 
+//때문에 메소드에서 이 값을 return으로 반환하지 않음
