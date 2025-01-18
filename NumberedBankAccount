@@ -1,0 +1,72 @@
+package week3;
+
+public class NumberedBankAccount {
+	private int accountNumber;
+	private double balance;
+
+	private static int nextAccountNumber = 100; 
+
+	public NumberedBankAccount() {
+		balance = 0.0;
+	}
+
+	public NumberedBankAccount (double initialBalance) {
+		balance = initialBalance;
+		accountNumber = nextAccountNumber++; //계좌가 생성 될 때마다 정적변수인 AccountNumber가 1씩 증가
+	}
+
+
+
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void deposit (double amount) {
+		if(amount>0) {
+			balance = balance + amount;
+		}
+	}
+
+	public void withdraw(double amount) {
+//계좌에는 출금금액보다 돈이 많아야하고 0보다 커야함
+		if(amount>balance && amount>0) {
+			System.out.println("돈이 없습니다");
+		}else {
+			balance = balance - amount;
+		}
+	}
+
+//other는 Tester클래스에서 받은 다른 계좌번호 계좌이체를 당하는 계좌에서 메서드 호출
+	public void transfer(double amount, NumberedBankAccount other) {
+		withdraw(amount);
+		other.deposit(amount);
+		System.out.println("Transfer"+ amount+"원 -->"+other);
+
+
+	}
+	public String toString() {
+		return "NumberedBankAccount[acoountNumber = "+ accountNumber+", balance="+balance+"]";
+	}
+
+}
+
+package week3;
+
+public class NumberedBankAccountTest {
+	public static void main(String[] args) {
+
+		NumberedBankAccount Account1 = new NumberedBankAccount(1000);
+		NumberedBankAccount Account2 = new NumberedBankAccount(0);
+		NumberedBankAccount Account3 = new NumberedBankAccount(0);
+		System.out.println("Account1: "+ Account1);
+		System.out.println("Account2: "+ Account2);
+		System.out.println("Account3: "+ Account3);
+		
+		Account1.transfer(300, Account2);
+		System.out.println("Account1: "+ Account1);
+		System.out.println("Account2: "+ Account2);
+		System.out.println("Account3: "+ Account3);
+		
+		
+	}
+}
