@@ -1,0 +1,45 @@
+package week2;
+
+public class Human2 {
+	private String name;
+	private int age;
+	
+	public Human2(String name, int age) {
+		this.name = name; //this는 매게변수와 햇갈리지 않기 위해 쓰는 것
+		this.age= age;
+		
+	}
+	
+	public String getName() {
+		
+		return name;
+	}
+	public void setName(String n) {
+		this.name = n;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int i) {
+		this.age = i;
+	}
+	
+	@Override
+	public String toString() {
+		return "Human [name="+name+", age="+ age +"]";//기존에 있는 toString메소드를 덮어쓰기
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		Human2 human1 = new Human2("Yuri",19);
+		human1.setName("Yuri");
+		human1.setAge(19);
+		
+		
+		System.out.println(human1.toString());
+		
+		
+	}
+
+}
