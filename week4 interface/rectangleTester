@@ -1,0 +1,95 @@
+package week4;
+
+public interface Measurable {	// measurable 측정할 수 있는!
+double getMeasure(); 	// 측정하다!
+}
+package week4;
+
+public class Rectangle2 implements Measurable {
+private double width, height;	// 필드
+  //Measurable 인터페이스를 상속 받았으니까 메서드를 꼭 구현해야함
+	public double getMeasure() {
+		
+		return width*height;
+	}
+	public Rectangle2(double width, double height) {
+		this.width=width;
+		this.height=height;
+	}	// 생성자
+	
+	public void setDimension(double width, double height) {
+		this.width=width;
+		this.height=height;
+		// 사각형의 크기를 설정
+	}
+	
+	public String toString() {
+		return String.format("Rectangle2 [width=%.1f, height=%.1f]",width,height);
+		
+	}
+	
+}
+
+package week4;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class RectangleTester2 {
+
+	private void test() {
+	
+		Scanner input = new Scanner(System.in);
+		long seed = input.nextLong();
+		Random random = new Random(seed);
+		Rectangle[] rectArray= new Rectangle[3];
+		ArrayList<Rectangle> rectList = new ArrayList<Rectangle>();
+
+		for(int i = 0 ; i<3;i++) {
+	
+			double value = random.nextDouble()*100;
+			double value2= random.nextDouble()*100;
+			Rectangle rect = new Rectangle(value, value2);
+			rectArray[i]= rect;
+			rectList.add(rect);
+		}
+	
+
+		for(Rectangle r : rectArray) {
+			System.out.println(r);
+		}
+		System.out.println(" ");
+		for(Rectangle r2 : rectList) {
+			System.out.println(r2);
+		}
+
+		System.out.println("변경함");
+		rectList.get(0).setDimension(1.0, 2.0);
+		//array와 list모두 참조(주소값)을 반환하는 것이기 때문에 하나만 값을 바꿔도 둘 다 바뀐다 
+		for(Rectangle r : rectArray) {
+			System.out.println(r);
+		}
+		System.out.println(" ");
+		for(Rectangle r2 : rectList) {
+			System.out.println(r2);
+		}
+		
+		Rectangle rect2 = new Rectangle(5.0,5.0);
+		rectList.add(0, rect2);
+		
+		for(Rectangle r : rectArray) {
+			System.out.println(r);
+		}
+		System.out.println(" ");
+		for(Rectangle r2 : rectList) {
+			System.out.println(r2);
+		}
+		//list.set(index,new 객체)
+		
+	}
+	public static void main(String[] args){
+		new RectangleTester2().test();
+	}
+
+}
