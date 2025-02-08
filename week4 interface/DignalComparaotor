@@ -1,0 +1,20 @@
+package week4;
+import java.util.Comparator;
+public class DignalComparaotor implements Comparator<Rectangle4> {
+	public int compare(Rectangle4 r1, Rectangle4 r2) {
+		double diagonal1 = Math.sqrt(r1.getHeight()*r1.getHeight()+r1.getWidth()*r1.getWidth());
+		double diagonal2 = Math.sqrt(r2.getHeight()*r2.getHeight()+r2.getWidth()*r2.getWidth());
+		if(diagonal1>diagonal2) {
+			return 1;
+		}else if(diagonal1 <diagonal2) {
+			return -1;
+		}else return 0;
+		 
+	}
+
+}
+/*
+Comparator는 Comparable가 달리 외부에서 조건의 재정의함
+Comparable보다 수정하기 편함
+생성자로 클래스를 받아서 사용가능
+*/
