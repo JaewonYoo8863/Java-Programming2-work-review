@@ -1,0 +1,46 @@
+package week4;
+public class DataSet {
+	private double sum;
+	private Measurable maximum;
+	private Measurable minimum;
+	private int count;
+
+	public DataSet() {
+		sum = 0;
+		count = 0;
+		maximum = null;
+		minimum= null;
+	}
+
+	public void add (Measurable x) {
+		sum = sum + x.getMeasure();
+		if (count == 0 ||maximum.getMeasure() < x.getMeasure())
+			maximum = x;
+		
+		if (count == 0 ||minimum.getMeasure() > x.getMeasure())
+			minimum = x;
+		count++;
+		
+	}
+
+	public double getAverage() {
+		if (count == 0)
+			return 0;
+		return sum / count;
+	}
+		
+		public Measurable getMaximum() {
+			
+			return maximum;
+		}
+		public Measurable getMinimum() {
+			
+			return minimum;
+		}
+		
+	}
+/*
+Measurable 인터페이스 타입을 사용함 
+다형성으로 인해 MEasurable 인터페이스를 상속하는 클래스의 데이터들을 Measurable타입으로 퉁칠 수 있음
+이 클래스에서는 평균 , 가장 큰 값 , 가장 작은 값을 반환함
+*/
